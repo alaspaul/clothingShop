@@ -1,1 +1,1 @@
-readme
+# React exercise Clothing Shop
