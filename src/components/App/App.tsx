@@ -30,13 +30,13 @@ export const App = () => {
     dispatch(add(updatedCart));
   };
 
-  const addToWish = (product: Product) => {
-    const updatedList = state.wishes.concat(product);
+  const addToWish = (product: Product) => {  // add to wishlist
+    const updatedList = state.wishes.concat(product); 
 
     dispatch(addWish(updatedList));
   };
 
-  const removeFromWish = (product: Product) => {
+  const removeFromWish = (product: Product) => { // remove wishfrom wishlist
     const updatedList = state.wishes.filter(
       (currentProduct: Product) => currentProduct.name !== product.name
     );
@@ -44,16 +44,16 @@ export const App = () => {
     dispatch(removeWish(updatedList));
   };
 
-  const removeFromCart = (product: Product) => {
+  const removeFromCart = (product: Product) => {   //remove item from cart
     const updatedCart = state.products.filter(
       (currentProduct: Product) => currentProduct.name !== product.name
     );
-    updatePrice(updatedCart);
+    updatePrice(updatedCart);  // update price
 
     dispatch(remove(updatedCart));
   };
 
-  const updatePrice = (products: [] = []) => {
+  const updatePrice = (products: [] = []) => {  //updates the price of the cart
     let total = 0;
     products.forEach(
       (product: { price: number; quantity: number }) =>
@@ -63,7 +63,7 @@ export const App = () => {
     dispatch(update(total));
   };
 
-  const increaseOrder = (product: Product) => {
+  const increaseOrder = (product: Product) => {  //increase number of orders
     const updatedList = state.products.map((currentProduct: Product) => {
       if (currentProduct.name === product.name) {
         return {
@@ -78,7 +78,7 @@ export const App = () => {
     dispatch(increaseQuantity(updatedList));
   };
 
-  const decreaseOrder = (product: Product) => {
+  const decreaseOrder = (product: Product) => {  //decrease number of orders
     const updatedList = state.products.map((currentProduct: Product) => {
       if (currentProduct.name === product.name) {
         return {
